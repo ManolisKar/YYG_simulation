@@ -266,6 +266,9 @@ def main(args):
         np.savetxt(args.save_csv_fname, combined_arr, '%s', delimiter=',', header=headers)
         print('----------\nSaved file to:', args.save_csv_fname)
 
+    ## that's the metric we're after
+    return deaths.sum()
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
