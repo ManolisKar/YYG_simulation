@@ -65,6 +65,7 @@ def load_best_params_from_file(best_params_dir, country, region=None, subregion=
     with open(best_params_fname) as f:
         best_params = json.load(f)
 
+    print ('\n\n Best parameters:\n', best_params, '\n\n')
     return best_params
 
 
