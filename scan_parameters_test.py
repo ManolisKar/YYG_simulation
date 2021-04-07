@@ -26,7 +26,7 @@ plt.rcParams.update({'ytick.labelsize' : 13})
 
 ## args needed to run the simulation main
 main_args = argparse.Namespace(
-    best_params_dir='best_params/latest', best_params_type='mean',
+    best_params_dir='YYG_simulation/best_params/latest', best_params_type='mean',
     change_param=None, country='US', quarantine_effectiveness=-1,
     quarantine_perc=0, region='', save_csv_fname='', set_param=None,
     simulation_end_date=None, simulation_start_date=None,
