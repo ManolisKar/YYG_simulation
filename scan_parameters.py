@@ -33,9 +33,10 @@ main_args = argparse.Namespace(
     skip_hospitalizations=False, subregion='', verbose=False
 )
 
+savedir = 'savefiles'
 
 ###
-### Define range of parameters
+### Define range and values of parameters
 ###
 
 params=['INITIAL_R_0',
@@ -43,6 +44,14 @@ params=['INITIAL_R_0',
         'LOCKDOWN_R_0',
         'RATE_OF_INFLECTION'
         ]
+full_params = [
+    'INITIAL_R_0',
+    'MORTALITY_RATE',
+    'LOCKDOWN_R_0',
+    'RATE_OF_INFLECTION',
+    'REOPEN_R',
+    'POST_REOPEN_EQUILIBRIUM_R'
+    ]
 
 par_range={}
 par_range['INITIAL_R_0'] = np.arange(0.6,6.,0.2)
@@ -54,8 +63,8 @@ par_range['RATE_OF_INFLECTION']=np.arange(0.15, 0.7, 0.1)
 default={}
 default['INITIAL_R_0'] = 2.2637755302375644
 default['MORTALITY_RATE'] = 0.01
-default['LOCKDOWN_R_0']=0.9038440070216232
 default['RATE_OF_INFLECTION']=0.35245146707754205
+default['LOCKDOWN_R_0']=0.9038440070216232
 default['REOPEN_R']=1.2681889965435804
 default['POST_REOPEN_EQUILIBRIUM_R']=1.0073471671122585
 
@@ -63,22 +72,29 @@ default['POST_REOPEN_EQUILIBRIUM_R']=1.0073471671122585
 best={}
 best['INITIAL_R_0'] = 1.8
 best['MORTALITY_RATE'] = 0.007
-best['LOCKDOWN_R_0']=0.7
 best['RATE_OF_INFLECTION']=0.5
+best['LOCKDOWN_R_0']=0.7
+lockdown_scale=best['LOCKDOWN_R_0']/default['LOCKDOWN_R_0']
+best['REOPEN_R'] = lockdown_scale*default['REOPEN_R']
+best['POST_REOPEN_EQUILIBRIUM_R'] = lockdown_scale*default['POST_REOPEN_EQUILIBRIUM_R']
 
 ## worst-case parameters
 worst={}
-worst['INITIAL_R_0'] = 4.
-worst['MORTALITY_RATE'] = 0.03
-worst['LOCKDOWN_R_0']=1.2
-worst['RATE_OF_INFLECTION']=0.25
+worst['INITIAL_R_0'] = 2.8
+worst['MORTALITY_RATE'] = 0.015
+worst['RATE_OF_INFLECTION']=0.3
+worst['LOCKDOWN_R_0']=0.92
+lockdown_scale=worst['LOCKDOWN_R_0']/default['LOCKDOWN_R_0']
+worst['REOPEN_R'] = lockdown_scale*default['REOPEN_R']
+worst['POST_REOPEN_EQUILIBRIUM_R'] = lockdown_scale*default['POST_REOPEN_EQUILIBRIUM_R']
 
 set_params=[]
-for param in params:
+for param in full_params:
     set_params += [(param, default[param])]
 main_args.set_param = set_params
+main_args.save_csv_fname = savedir + '/baseline.csv'
 default['total_deaths'] = run_simulation.main(main_args)
-
+main_args.save_csv_fname = ''
 
 fig,axs=plt.subplots(2,2)
 for i,param in enumerate(params):
@@ -95,10 +111,13 @@ for i,param in enumerate(params):
         y+=[ run_simulation.main(main_args) ]
     axs[row,col].plot(x,y, label='%s scan'%param)
     axs[row,col].scatter(default[param], default['total_deaths'], color='blue', label='baseline simulation')
+    ## Now for the best case
     main_args.set_param=[(param, best[param])]
     best['total_deaths'] = run_simulation.main(main_args)
+    ## Now for the worst case
     main_args.set_param=[(param, worst[param])]
     worst['total_deaths'] = run_simulation.main(main_args)
+
     axs[row,col].scatter(best[param], best['total_deaths'], color='g', label='best-case scenario')
     axs[row,col].scatter(worst[param], worst['total_deaths'], color='r', label='worst-case scenario')
     axs[row,col].set_title(param)
@@ -109,6 +128,59 @@ for i,param in enumerate(params):
 
 plt.tight_layout()
 plt.show()
+
+
+### Now extract all dates and deaths for each scenario and plot
+import pandas as pd
+## For the best case
+set_params=[]
+for param in params:
+    set_params += [(param, best[param])]
+main_args.set_param=set_params
+main_args.save_csv_fname = savedir + '/best.csv'
+best['total_deaths'] = run_simulation.main(main_args)
+## Now for the worst case
+set_params=[]
+for param in params:
+    set_params += [(param, worst[param])]
+main_args.set_param=set_params
+main_args.save_csv_fname = savedir + '/worst.csv'
+worst['total_deaths'] = run_simulation.main(main_args)
+main_args.save_csv_fname = ''
+
+filename = savedir + '/baseline.csv'
+df_base = pd.read_csv(filename)
+df_base['days'] = pd.Series(list(range(len(df_base))))
+filename = savedir + '/best.csv'
+df_best = pd.read_csv(filename)
+filename = savedir + '/worst.csv'
+df_worst = pd.read_csv(filename)
+
+plt.figure(figsize=(12,6))
+plt.scatter(df_base['days'], df_base['deaths'].cumsum(), label='Tuned to reality')
+plt.scatter(df_base['days'], df_best['deaths'].cumsum(), label='Best-case parameters')
+plt.scatter(df_base['days'], df_worst['deaths'].cumsum(), label='Worst-case parameters')
+plt.title('Deaths in the COVID-19 pandemic in several scenarios')
+plt.xlabel('Days in the pandemic')
+plt.ylabel('Total deaths')
+plt.legend(prop={'size': 15})
+plt.grid()
+plt.tight_layout()
+plt.show()
+
+
+plt.figure(figsize=(12,6))
+plt.scatter(df_base['days'], df_base['deaths'], label='Tuned to reality, total deaths: %.0f'%default['total_deaths'])
+plt.scatter(df_base['days'], df_best['deaths'], label='Best-case parameters, total deaths: %.0f'%best['total_deaths'])
+plt.scatter(df_base['days'], df_worst['deaths'], label='Worst-case parameters, total deaths: %.0f'%worst['total_deaths'])
+plt.title('Deaths in the COVID-19 pandemic in several scenarios')
+plt.xlabel('Days in the pandemic')
+plt.ylabel('Deaths per day')
+plt.legend(prop={'size': 18})
+plt.grid()
+plt.tight_layout()
+plt.show()
+
 
 #sys.exit()
 
