@@ -11,7 +11,7 @@ The SEIR model tracks probabilities of transition between the 4 states: **S**usc
 
 
 <p align = "center">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/SEIR.PNG" alt="Trulli" style="width:90%">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/SEIR.PNG" alt="Trulli" style="width:98%">
 </p>
 <p align = "center">
 <sup>
@@ -29,7 +29,7 @@ The simulation seems to be doing a very good job of simulating pandemic outcomes
 
 
 <p align = "center">
-<img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/baseline_sim.png?raw=true" alt="Trulli" style="width:80%">
+<img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/baseline_sim.png?raw=true" alt="Trulli" style="width:95%">
 </p>
 <p align = "center">
 <sup>
@@ -73,7 +73,7 @@ We also define two simulated scenarios, other than the baseline: one where advan
 
 
 <p align = "center">
-<img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/parameter_scans.png?raw=true" alt="Trulli" style="width:90%">
+<img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/parameter_scans.png?raw=true" alt="Trulli" style="width:100%">
 </p>
 <p align = "center">
 <sup>
