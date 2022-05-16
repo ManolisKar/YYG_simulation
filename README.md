@@ -82,13 +82,30 @@ Fig. 3: Parameter scans to characterize their effect on pandemic deaths. Three p
 </p>
 
 
-Then we modify all 4 parameters at the same time, to better understand their combined effect. 
+Then we modify all 4 parameters at the same time, to better understand their combined effect. In Fig. 4 we plot the hyper-surface of maximum deaths in the sub-space of two of the modified parameters. Of course the validity of simulation is limited when we extrapolate to the region of tens of millions of deaths within the first pandemic year.
 
 <p align = "center">
 <img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/amias_3D-INITIAL_R_0_MORTALITY_RATE.png?raw=true" alt="Trulli" style="width:90%">
 </p>
 <p align = "center">
 <sup>
-Fig. 4: Pandemic deaths (in the vertical axis) versus the Initial ![R0](https://latex.codecogs.com/svg.image?R_0). 
+Fig. 4: Pandemic deaths (in the vertical axis, in 1e7 units) versus the Initial R_0 and the Mortality Rate parameters - though all four parameters are being modified. The surface of maximum deaths is plotted for each parameter combination. 
+</sup>
+</p>
+
+
+Finally we set the four examined parameters to their values under the three scenarios identified in Fig. 3. 
+The comparative pandemic outcomes in deaths per day are plotted in Fig. 5 below. 
+We see that very modest changes in pandemic parameters can have a massive impact on outcomes. The modeled use of advanced technologies could squash pandemic deaths down at the ~3% level. 
+
+On the other hand, very slight increase in disease parameters (a scenario of a slightly more dangerous and lethal disease than COVID-19, keeping the parameters realistic as compared to other diseases and past pandemics) could result in ~300% more dead. 
+In fact this latter estimate is moderated by the immunity effect, which vasly suppresses deaths after a large fraction of the population thas been infected. But the extrapolation of the simulated immunity effect in a region far outside where it was modeled cannot be trusted. 
+
+<p align = "center">
+<img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/deaths_scenarios.png?raw=true" alt="Trulli" style="width:90%">
+</p>
+<p align = "center">
+<sup>
+Fig. 5: Pandemic deaths per day under the three scenarios identified in Fig. 3. Also noted in the legend are the total deaths in the first 9 months for each scenario.
 </sup>
 </p>
