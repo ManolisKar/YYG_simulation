@@ -85,7 +85,7 @@ Fig. 3: Parameter scans to characterize their effect on pandemic deaths. Three p
 Then we modify all 4 parameters at the same time, to better understand their combined effect. In Fig. 4 we plot the hyper-surface of maximum deaths in the sub-space of two of the modified parameters. Of course the validity of simulation is limited when we extrapolate to the region of tens of millions of deaths within the first pandemic year.
 
 <p align = "center">
-<img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/amias_3D-INITIAL_R_0_MORTALITY_RATE.png?raw=true" alt="Trulli" style="width:90%">
+<img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/amias_3D-INITIAL_R_0_MORTALITY_RATE.png?raw=true" alt="Trulli" style="width:70%">
 </p>
 <p align = "center">
 <sup>
@@ -102,7 +102,7 @@ On the other hand, very slight increase in disease parameters (a scenario of a s
 In fact this latter estimate is moderated by the immunity effect, which vasly suppresses deaths after a large fraction of the population thas been infected. But the extrapolation of the simulated immunity effect in a region far outside where it was modeled cannot be trusted. 
 
 <p align = "center">
-<img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/deaths_scenarios.png?raw=true" alt="Trulli" style="width:90%">
+<img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/deaths_scenarios.png?raw=true" alt="Trulli" style="width:100%">
 </p>
 <p align = "center">
 <sup>
