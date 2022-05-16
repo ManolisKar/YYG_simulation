@@ -89,6 +89,6 @@ Then we modify all 4 parameters at the same time, to better understand their com
 </p>
 <p align = "center">
 <sup>
-Fig. 4: Pandemic deaths (in the vertical axis) versus the Initial https://latex.codecogs.com/svg.image?R_0. 
+Fig. 4: Pandemic deaths (in the vertical axis) versus the Initial ![R0](https://latex.codecogs.com/svg.image?R_0). 
 </sup>
 </p>
