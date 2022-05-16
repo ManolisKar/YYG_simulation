@@ -11,7 +11,7 @@ The SEIR model tracks probabilities of transition between the 4 states: **S**usc
 
 
 <p align = "center">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/SEIR.PNG" alt="Trulli" style="width:50%">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/SEIR.PNG" alt="Trulli" style="width:90%">
 </p>
 <p align = "center">
 <sup>
@@ -66,7 +66,7 @@ This is the initial estimate of the infection fatality rate (IFR). This value is
 
 
 
-## Parameter scans
+## Parameter scans: Results and analysis
 
 We iterate the simulation over many trials, modifying the value of four main parameters to characterize their effect on pandemic deaths. 
 We also define two simulated scenarios, other than the baseline: one where advanced medical technologies were available, and used to ameliorate the effects of the pandemic; and one where the disease parameters were just slightly worse than they happened to be for COVID-19, averaged over the U.S.
@@ -109,3 +109,11 @@ In fact this latter estimate is moderated by the immunity effect, which vasly su
 Fig. 5: Pandemic deaths per day under the three scenarios identified in Fig. 3. Also noted in the legend are the total deaths in the first 9 months for each scenario.
 </sup>
 </p>
+
+
+## Conclusion
+
+This powerful study is possible due to the confluence of three main factors: disease modeling and experience from past pandemics; computational advancements and ML methods; and the COVID-19 pandemic itself, which (oher than a tragedy and a new reality we have to deal with) is a real-life experiment to characterize a society's response to a pandemic effect. 
+We can use these capabilities to model how different things would be under new technologies, or if the society's response was different, to hopefully learn valuable lessons on pandemic preparedness that should increase our resilience.
+
+It was a pleasure to work on this project with my student. She did a fanastic job and deserved the Gold Medal she was awarded in the DuPage ACT-SO competition.
