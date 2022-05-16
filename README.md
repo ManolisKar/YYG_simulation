@@ -10,7 +10,14 @@ The publicly available YYG SEIR simulator is used to simulate infections, hospit
 The SEIR model tracks probabilities of transition between the 4 states: **S**usceptible-**E**xposed-**I**nfectious-**R**ecovered/deceased. For more details on the YYG SEIR model see [their website](https://covid19-projections.com/model-details/).
 
 
-![SEIR Model Diagram](https://upload.wikimedia.org/wikipedia/commons/3/3d/SEIR.PNG)
+<p align = "left">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/SEIR.PNG" alt="Trulli" style="width:50%">
+</p>
+<p align = "center">
+<sup>
+Fig. 1: SEIR model diagram. 
+</sup>
+</p>
 
 
 This is a fantastic and very useful tool for our study. It is simple to run, easily modifiable, and comes with "best" sets of parameters for each geographic region. 
@@ -19,6 +26,16 @@ Normally the simulation can be used to study hypothetical scenarios such as, "wh
 
 As a baseline test of the out-of-the-box simulation performance, we plot U.S. deaths in the COVID-19 pandemic for the first ~9 months of the pandemic, and we compare its simulated predictions to the actual counts as found from an independent source. 
 The simulation seems to be doing a very good job of simulating pandemic outcomes as experienced in the first year of the outbreak.
+
+
+<p align = "left">
+<img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/baseline_sim.png?raw=true" alt="Trulli" style="width:80%">
+</p>
+<p align = "center">
+<sup>
+Fig. 2: Baseline simulation matches reality well in terms of pandemic deaths.  
+</sup>
+</p>
 
 
 ## Parameters
@@ -47,3 +64,19 @@ This is the rate at which the `INITIAL_R_0` transitions to `LOCKDOWN_R_0`. A num
 
 This is the initial estimate of the infection fatality rate (IFR). This value is usually between 0.005-0.0125. Read more about our IFR estimates [here](https://covid19-projections.com/about/#infection-fatality-rate-ifr).
 
+
+
+## Parameter scans
+
+We iterate the simulation over many trials, modifying the value of four main parameters to characterize their effect on pandemic deaths. 
+We also define two simulated scenarios, other than the baseline: one where advanced medical technologies were available, and used to ameliorate the effects of the pandemic; and one where the disease parameters were just slightly worse than they happened to be for COVID-19, averaged over the U.S.
+
+
+<p align = "left">
+<img src="https://github.com/ManolisKar/YYG_simulation/blob/master/images/parameter_scans.png?raw=true" alt="Trulli" style="width:90%">
+</p>
+<p align = "center">
+<sup>
+Fig. 3: Parameter scans to characterize their effect on pandemic deaths. Three parameter values denote different scenarios: baseline/reality (blue), a scenario where advanced technologies are available (green), and one where the disease parameters are slightly worse than they were for COVID-19 (red).
+</sup>
+</p>
